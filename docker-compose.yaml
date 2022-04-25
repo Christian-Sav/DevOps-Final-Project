@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+    nginx:
+        image: chr1ss4v/nginx
+        build: ./nginx
+        ports:
+            - '80:80'
+        container_name: nginx
+    rest:
+        image: chr1ss4v/rest
+        build: ./spring-petclinic-rest
+        ports:
+            - '9966:9966'
+        container_name: rest
+
+    angular:
+        image: chr1ss4v/angular
+        build: ./spring-petclinic-angular
+        ports:
+            - '8080:8080'
+        container_name: angular
