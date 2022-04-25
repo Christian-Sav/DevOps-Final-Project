@@ -7,14 +7,14 @@ services:
             - '80:80'
         container_name: nginx
     rest:
-        image: chr1ss4v/rest
+        image: chr1ss4v/backend
         build: ./spring-petclinic-rest
         ports:
             - '9966:9966'
         container_name: rest
 
     angular:
-        image: chr1ss4v/angular
+        image: chr1ss4v/frontend
         build: ./spring-petclinic-angular
         ports:
             - '8080:8080'
