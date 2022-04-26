@@ -7,5 +7,5 @@ output "subnet_2" {
 }
 
 output "subnet_ids" {
-    value = aws_Subnet.Proj-SNs[*].id
+    value = aws_subnet.Proj-SNs[*].id
 }

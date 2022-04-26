@@ -23,3 +23,4 @@ variable "available_subnets" {
 
 variable "subnet_ids" {
     description = "Subnet Ids"
+}

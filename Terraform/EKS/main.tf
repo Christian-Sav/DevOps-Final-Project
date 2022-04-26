@@ -8,13 +8,13 @@ resource "aws_eks_cluster" "QA-cluster" {
     subnet_ids = var.available_subnets
   }
 
-  depends_on = var.iam_roles_eks_cluster
+  # depends_on = var.iam_roles_eks_cluster
 
 }
 
 resource "aws_eks_node_group" "qa_node_group" {
 
-  cluster_name = aws_eks_cluster.qa_cluster.name
+  cluster_name = aws_eks_cluster.QA-cluster.name
 
   node_group_name = "qa_node_group"
 
@@ -32,6 +32,6 @@ resource "aws_eks_node_group" "qa_node_group" {
 
   }
 
-  depends_on = var.iam_roles_eks_node
+  # depends_on = var.iam_roles_eks_node
 
 }

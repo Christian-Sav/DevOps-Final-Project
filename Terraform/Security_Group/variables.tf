@@ -15,3 +15,4 @@ variable "egress_port" {
 
 variable "vpc_id" {
   description = "VPC ID for Security Group"
+}

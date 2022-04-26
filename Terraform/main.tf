@@ -1,6 +1,7 @@
 provider "aws" {
   region                   = "eu-west-2"
   shared_credentials_files = ["~/.aws/credentials"]
+}
 
 module "VPC" {
   source = "./VPC"
@@ -11,7 +12,7 @@ module "EC2" {
   source = "./EC2"
   subnet_id = module.Subnet.subnet_1
   ami_id = var.ami_id
-  vpc_security_group_ids = [module.security_group.sg_id]
+  vpc_security_group_ids = [module.Security_Group.sg_id]
 }
 
 module "Subnet" {
@@ -42,3 +43,4 @@ module "eks" {
     qa_cluster_iam_role_arn = module.iam.cluster_iam_role
     qa_node_iam_role_arn = module.iam.node_iam_role
     available_subnets = [module.Subnet.subnet_1, module.Subnet.subnet_2]
+}
