@@ -15,9 +15,9 @@ resource "aws_security_group" "Proj-SG" {
   }
 
   egress {
-    from_port   = var.outbound_port
+    from_port   = var.egress_port
     protocol    = "-1"
-    to_port     = var.outbound_port
+    to_port     = var.egress_port
     cidr_blocks = [var.ip_addresses]
   }
 

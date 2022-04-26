@@ -8,7 +8,7 @@ variable "ingress_ports" {
   default     = [22, 9090, 80]
 }
 
-variable "outbound_port" {
+variable "egress_port" {
   description = "Port open to allow outbound connection"
   default     = 0
 }

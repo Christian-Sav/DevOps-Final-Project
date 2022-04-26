@@ -22,7 +22,7 @@ module "Subnet" {
 
 module "igw" {
     source = "./IGW"
-    vpc_id = module.vpc.vpc_id
+    vpc_id = module.VPC.vpc_id
     subnet_1 = module.Subnet.subnet_1
     subnet_2 = module.Subnet.subnet_2
 }
