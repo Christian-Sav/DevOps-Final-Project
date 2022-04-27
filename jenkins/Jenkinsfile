@@ -1,30 +1,37 @@
 pipeline {
     agent any
-    environment {
-        DOCKER_CREDS = credentials('DOCKER_CREDS')
-        ACCESS_KEY = credentials('ACCESS_KEY')
-        SECRET_KEY = credentials('SECRET_KEY')
-        install = "false"
-    }
     stages {
-        stage('Setup'){
-            steps{
-                sh "bash jenkins/installscripts.sh"
+        stage('Install') {
+            steps {
+                sh "bash installscripts.sh"
             }
         }
-        stage('Terraform provisions'){
-            steps{
-                script{
-                    if (env.install == "false"){
-                        sh "bash jenkins/terrascripts.sh"
-                    }
-                }
+
+        stage('Build and Push') {
+            environment {
+                DOCKER_CREDS = credentials('docker-creds')
+            }
+            steps {
+                sh "docker-compose build --parallel"
+                sh "docker login -u ${DOCKER_CREDS_USR} -p ${DOCKER_CREDS_PSW}"
+                sh "docker-compose push"
+                sh "/bin/bash -c 'docker rmi \$(docker images -q)'"
             }
         }
-        stage('Kube Build'){
+
+        stage('Terraform') {
+            steps {
+                sh "bash terrascripts.sh"
+            }
+        }
+    }
+        stage('K8s'){
             steps{
                 sh "bash jenkins/kubescripts.sh"
             }
+    post {
+        always {
+            archiveArtifacts artifacts: "*/htmlcov/*"
         }
     }
 }
