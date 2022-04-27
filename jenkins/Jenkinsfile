@@ -24,12 +24,12 @@ pipeline {
                 sh "bash terrascripts.sh"
             }
         }
-    }
         stage('K8s'){
             steps{
                 sh "bash jenkins/kubescripts.sh"
             }
         }
+    }
     post {
         always {
             archiveArtifacts artifacts: "*/htmlcov/*"
