@@ -8,8 +8,6 @@ resource "aws_eks_cluster" "QA-cluster" {
     subnet_ids = var.available_subnets
   }
 
-  # depends_on = var.iam_roles_eks_cluster
-
 }
 
 resource "aws_eks_node_group" "qa_node_group" {
@@ -31,7 +29,4 @@ resource "aws_eks_node_group" "qa_node_group" {
     min_size = 1
 
   }
-
-  # depends_on = var.iam_roles_eks_node
-
 }
