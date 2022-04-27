@@ -29,6 +29,7 @@ pipeline {
             steps{
                 sh "bash jenkins/kubescripts.sh"
             }
+        }
     post {
         always {
             archiveArtifacts artifacts: "*/htmlcov/*"
