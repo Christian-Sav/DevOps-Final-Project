@@ -7,8 +7,8 @@ spec:
     app: frontend
   ports:
   - protocol: TCP
-    port: 8080
-    targetPort: 8080
+    port: 8081
+    targetPort: 8081
   type: ClusterIP
 ---
 apiVersion: apps/v1
@@ -18,7 +18,7 @@ metadata:
   labels:
     app: frontend
 spec:
-  replicas: 3
+  replicas: 3      
   selector:
     matchLabels:
       app: frontend
@@ -27,12 +27,9 @@ spec:
       labels:
         app: frontend
     spec:
+      hostname: frontend
       containers:
       - name: frontend
-        image: chr1ss4v/frontend
+        image: amitpurohit29/frontend
         ports:
-        - containerPort: 8080
-   
-
-
-
+        - containerPort: 8081
