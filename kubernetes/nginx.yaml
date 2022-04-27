@@ -18,10 +18,17 @@ metadata:
   labels:
     app: nginx
 spec:
-  hostname: nginx
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      hostname: nginx
       containers:
       - name: nginx
-        image: chr1ss4v/nginx
+        image: amitpurohit29/nginx
         ports:
         - containerPort: 80
-    
