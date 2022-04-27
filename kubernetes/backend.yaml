@@ -5,10 +5,9 @@ metadata:
 spec:
   selector:
     app: backend
-  ports: 
+  ports:
   - protocol: TCP
     port: 9966
-    targetPort: 9966
   type: ClusterIP
 ---
 apiVersion: apps/v1
@@ -30,6 +29,6 @@ spec:
       hostname: backend
       containers:
       - name: backend
-        image: chr1ss4v/backend
+        image: amitpurohit29/backend
         ports:
         - containerPort: 9966

@@ -18,7 +18,7 @@ metadata:
   labels:
     app: frontend
 spec:
-  replicas: 3
+  replicas: 3      
   selector:
     matchLabels:
       app: frontend
@@ -27,12 +27,9 @@ spec:
       labels:
         app: frontend
     spec:
+      hostname: frontend
       containers:
       - name: frontend
-        image: chr1ss4v/frontend
+        image: amitpurohit29/frontend
         ports:
         - containerPort: 8080
-   
-
-
-
