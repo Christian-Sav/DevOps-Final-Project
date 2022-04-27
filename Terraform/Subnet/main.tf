@@ -12,6 +12,5 @@ resource "aws_subnet" "Proj-SNs" {
   tags = {
     Name = "proj-sn"
     Task = "Project"  
-   "kubernetes.io/cluster/qa_cluster" = "shared"
   }
 }
