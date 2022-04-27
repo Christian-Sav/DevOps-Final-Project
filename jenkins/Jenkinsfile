@@ -1,8 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_USERNAME = credentials('DOCKER_USERNAME')
-        DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
+        DOCKER_CREDS = credentials('docker_creds')
         ACCESS_KEY = credentials('ACCESS_KEY')
         SECRET_KEY = credentials('SECRET_KEY')
         install = "false"
