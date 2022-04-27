@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Install') {
             steps {
-                sh "bash installscripts.sh"
+                sh "bash ./jenkins/installscripts.sh"
             }
         }
 
@@ -21,12 +21,12 @@ pipeline {
 
         stage('Terraform') {
             steps {
-                sh "bash terrascripts.sh"
+                sh "bash ./jenkins/terrascripts.sh"
             }
         }
         stage('K8s'){
             steps{
-                sh "bash jenkins/kubescripts.sh"
+                sh "bash ./jenkins/kubescripts.sh"
             }
         }
     }
