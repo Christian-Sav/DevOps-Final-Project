@@ -2,8 +2,8 @@ pipeline {
     agent any
     environment {
         DOCKER_CREDS = credentials('DOCKER_CREDS')
-        ACCESS_KEY = credentials('ACCESS_KEY')
-        SECRET_KEY = credentials('SECRET_KEY')
+        ACCESS_KEY = credentials('ACCESS_KEY_PSW')
+        SECRET_KEY = credentials('SECRET_KEY_PSW')
     }
     stages {
         stage('Install') {
@@ -23,6 +23,10 @@ pipeline {
 
         stage('Terraform') {
             steps {
+                sh "aws configure set aws_access_key_id $ACCESS_KEY"
+                sh "aws configure set aws_secret_access_key $SECRET_KEY"
+                sh "aws configure set region 'eu-west-2'"
+                sh "aws configure set output 'json'"
                 sh "ls ~/.aws"
                 sh "cat ~/.aws/credentials"
                 sh "bash ./jenkins/terrascripts.sh"
