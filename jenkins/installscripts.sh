@@ -18,6 +18,6 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/l
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
-sudo apt install awscli
+sudo apt install awscli -y
 aws configure set aws_access_key_id "${ACCESS_KEY_PSW}"
 aws configure set aws_secret_access_key "${SECRET_KEY_PSW}"
