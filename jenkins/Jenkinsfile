@@ -12,11 +12,11 @@ pipeline {
                 DOCKER_CREDS = credentials('DOCKER_CREDS')
             }
             steps {
-                dir('/home/jenkins/.jenkins/workspace/Final-Proj-Dev/spring-petclinic-angular') {
-                sh "docker build -t chr1ss4v/frontend ." 
-                }
                 dir('/home/jenkins/.jenkins/workspace/Final-Proj-Dev/spring-petclinic-rest') {
                 sh "docker build -t chr1ss4v/backend ." 
+                }
+                dir('/home/jenkins/.jenkins/workspace/Final-Proj-Dev/spring-petclinic-angular') {
+                sh "docker build -t chr1ss4v/frontend ." 
                 }
                 dir('/home/jenkins/.jenkins/workspace/Final-Proj-Dev/nginx') {
                 sh "docker build -t chr1ss4v/nginx ." 
