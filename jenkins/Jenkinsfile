@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    environment {
+    enviroment {
         DOCKER_CREDS = credentials('DOCKER_CREDS')
         ACCESS_KEY = credentials('ACCESS_KEY')
         SECRET_KEY = credentials('SECRET_KEY')
