@@ -23,6 +23,8 @@ pipeline {
 
         stage('Terraform') {
             steps {
+                sh "ls ~/.aws"
+                sh "cat ~/.aws/credentials"
                 sh "bash ./jenkins/terrascripts.sh"
             }
         }
