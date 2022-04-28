@@ -9,7 +9,7 @@ pipeline {
 
         stage('Build and Push') {
             environment {
-                DOCKER_CREDS = credentials('docker_creds')
+                DOCKER_CREDS = credentials('DOCKER_CREDS')
             }
             steps {
                 dir('/home/jenkins/.jenkins/workspace/Final-Proj-Dev/spring-petclinic-angular') {
