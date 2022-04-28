@@ -6,11 +6,11 @@ pipeline {
         SECRET_KEY = credentials('SECRET_KEY_PSW')
     }
     stages {
-        // stage('Install') {
-        //     steps {
-        //         sh "bash ./jenkins/installscripts.sh"
-        //     }
-        // }
+        stage('Install') {
+            steps {
+                sh "bash ./jenkins/installscripts.sh"
+            }
+        }
 
         stage('Build and Push') {
             steps {
