@@ -6,11 +6,11 @@ pipeline {
         SECRET_KEY = credentials('SECRET_KEY_PSW')
     }
     stages {
-        stage('Install') {
-            steps {
-                sh "bash ./jenkins/installscripts.sh"
-            }
-        }
+        // stage('Install') {
+        //     steps {
+        //         sh "bash ./jenkins/installscripts.sh"
+        //     }
+        // }
 
         stage('Build and Push') {
             steps {
@@ -37,11 +37,6 @@ pipeline {
             steps{
                 sh "bash ./jenkins/kubescripts.sh"
             }
-        }
-    }
-    post {
-        always {
-            archiveArtifacts artifacts: "*/htmlcov/*"
         }
     }
 }
