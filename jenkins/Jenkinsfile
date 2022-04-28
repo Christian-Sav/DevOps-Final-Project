@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    enviroment {
+        DOCKER_CREDS = credentials('DOCKER_CREDS')
+        ACCESS_KEY = credentials('ACCESS_KEY')
+        SECRET_KEY = credentials('SECRET_KEY')
     stages {
         // stage('Install') {
         //     steps {
@@ -8,9 +12,6 @@ pipeline {
         // }
 
         stage('Build and Push') {
-            environment {
-                DOCKER_CREDS = credentials('DOCKER_CREDS')
-            }
             steps {
                 sh "docker-compose build --parallel"
                 sh "docker login -u ${DOCKER_CREDS_USR} -p ${DOCKER_CREDS_PSW}"
@@ -24,6 +25,7 @@ pipeline {
                 sh "bash ./jenkins/terrascripts.sh"
             }
         }
+
         stage('K8s'){
             steps{
                 sh "bash ./jenkins/kubescripts.sh"
