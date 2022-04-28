@@ -12,17 +12,9 @@ pipeline {
                 DOCKER_CREDS = credentials('DOCKER_CREDS')
             }
             steps {
-                dir('/home/jenkins/.jenkins/workspace/Final-Proj-Dev/spring-petclinic-rest') {
-                sh "docker build -t chr1ss4v/backend ." 
-                }
-                dir('/home/jenkins/.jenkins/workspace/Final-Proj-Dev/spring-petclinic-angular') {
-                sh "docker build -t chr1ss4v/frontend ." 
-                }
-                dir('/home/jenkins/.jenkins/workspace/Final-Proj-Dev/nginx') {
-                sh "docker build -t chr1ss4v/nginx ." 
-                }
+                sh "docker-compose build --parallel"
                 sh "docker login -u ${DOCKER_CREDS_USR} -p ${DOCKER_CREDS_PSW}"
-                sh "docker push chr1ss4v/frontend chr1ss4v/backend chr1ss4v/nginx"
+                sh "docker-compose push"
                 sh "/bin/bash -c 'docker rmi \$(docker images -q)'"
             }
         }
