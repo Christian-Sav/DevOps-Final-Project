@@ -1,11 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Install') {
-            steps {
-                sh "bash ./jenkins/installscripts.sh"
-            }
-        }
+        // stage('Install') {
+        //     steps {
+        //         sh "bash ./jenkins/installscripts.sh"
+        //     }
+        // }
 
         stage('Build and Push') {
             environment {
@@ -15,7 +15,7 @@ pipeline {
                 sh "docker-compose build --parallel"
                 sh "docker login -u ${DOCKER_CREDS_USR} -p ${DOCKER_CREDS_PSW}"
                 sh "docker-compose push"
-                sh "/bin/bash -c 'docker rmi \$(docker images -q)'"
+                // sh "/bin/bash -c 'docker rmi \$(docker images -q)'"
             }
         }
 
