@@ -12,12 +12,6 @@ pipeline {
     //         }
     //     }
 
-        stage('Testing') {
-            steps{
-                
-            }
-        }
-
         stage('Build and Push') {
             steps {
                 sh "docker-compose build --parallel"
