@@ -29,6 +29,6 @@ spec:
       hostname: backend
       containers:
       - name: backend
-        image: amitpurohit29/backend
+        image: chr1ss4v/backend
         ports:
         - containerPort: 9966
